@@ -1,0 +1,78 @@
+# ---------------------------
+# Python virtual environments
+# ---------------------------
+venv/
+.env/
+env/
+myenv/
+*.venv/
+greenw/
+
+# ---------------------------
+# Python cache & compiled files
+# ---------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# ---------------------------
+# Flask-specific files
+# ---------------------------
+instance/
+*.sqlite
+*.db
+
+# ---------------------------
+# React / Node.js
+# ---------------------------
+node_modules/
+dist/
+build/
+.parcel-cache/
+.cache/
+coverage/
+
+# ---------------------------
+# Environment variables
+# ---------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ---------------------------
+# Logs
+# ---------------------------
+*.log
+logs/
+
+# ---------------------------
+# IDE / Editor files
+# ---------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ---------------------------
+# OS-specific files
+# ---------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Miscellaneous
+# ---------------------------
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+
+# ---------------------------
+# Build outputs (optional)
+# ---------------------------
+static/
+public/build/
