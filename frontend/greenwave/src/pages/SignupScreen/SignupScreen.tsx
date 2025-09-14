@@ -1,17 +1,19 @@
 import { useState }  from "react";
-import './LoginScreen.css';
+import './SignupScreen.css';
 import { Link } from "react-router-dom";
 
 
-export default function LoginScreen(){
+export default function SignupScreen(){
 
-    const loginUser = async (email: string, password: string) => {
+    const signupUser = async (email: string, password: string) => {
   // ... API call logic would be here
   console.log("Logging in with:", email, password);//should remove 
 };
 
 
 
+    const[fullname,setfullName]= useState('');
+    const[username,setuserName]= useState('');
     const[email,setEmail]= useState('');
     const[password,setPassword]= useState('');
     const[isLoading,setisLoading]= useState(false);
@@ -23,7 +25,7 @@ export default function LoginScreen(){
         setError(null)
 
         try{
-            await loginUser(email,password)
+            await signupUser(email,password)
 
         }catch(err){
             setError('Failed to log in. Please check your credentials.');
@@ -41,6 +43,27 @@ export default function LoginScreen(){
             <form onSubmit={handleSubmit} className="login-form">
             {error && <div className="error-message">{error}</div>}
 
+            <label htmlFor="fullname" className="login-label">Full Name</label>
+            <input 
+            type="text"
+            placeholder="John Doe"
+            value={fullname}
+            onChange={(e) => setfullName(e.target.value)}
+            required
+            className="login-input" 
+            />
+
+            <label htmlFor="username" className="login-label">User Name</label>
+            <input 
+            type="text"
+            placeholder="john"
+            value={username}
+            onChange={(e) => setuserName(e.target.value)}
+            required
+            className="login-input" 
+            />
+
+            <label htmlFor="email" className="login-label">Email</label>
             <input 
             type="email"
             placeholder="abcdwxyz@example.com"
@@ -50,6 +73,7 @@ export default function LoginScreen(){
             className="login-input" 
             />
 
+            <label htmlFor="password" className="login-label">Password</label>
             <input 
             type="password"
             placeholder="Password"
@@ -66,7 +90,8 @@ export default function LoginScreen(){
 
             </form>
             <p className="login-signup-prompt">
-             Don't have an account? <Link to="/signup" className="login-signup-link">Sign Up</Link>
+            Have an account? <Link to="/login" className="login-signup-link">Log In</Link>
+
             </p>
         </div>
     )
