@@ -76,3 +76,5 @@ Thumbs.db
 # ---------------------------
 static/
 public/build/
+
+__init__.py

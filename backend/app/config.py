@@ -1,0 +1,1 @@
+# Configuration variables (database URL, secret keys)

@@ -1,0 +1,1 @@
+# Product listing model schema

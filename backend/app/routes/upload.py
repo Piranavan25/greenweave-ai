@@ -1,0 +1,1 @@
+ # The core endpoint for image upload & AI prediction
