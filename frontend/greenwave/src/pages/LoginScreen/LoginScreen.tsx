@@ -10,7 +10,7 @@ export default function LoginScreen(){
 
 
 
-    const[email,setEmail]= useState('');
+    const[username,setuserName]= useState('');
     const[password,setPassword]= useState('');
     const[isLoading,setisLoading]= useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export default function LoginScreen(){
         setError(null)
 
         try{
-            const data = await authService.login(email, password);
+            const data = await authService.login(username, password);
             tokenService.storeTokens(data.access_token, data.refresh_token);
             navigate('/dashboard');
 
@@ -44,10 +44,10 @@ export default function LoginScreen(){
             {error && <div className="error-message">{error}</div>}
 
             <input 
-            type="email"
+            type="text"
             placeholder="abcdwxyz@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={username}
+            onChange={(e) => setuserName(e.target.value)}
             required
             className="login-input" 
             />
