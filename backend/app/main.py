@@ -17,14 +17,16 @@ def create_app():
     jwt.init_app(app)
     migrate.init_app(app, db)  # Initialize Flask-Migrate
 
+    from app.models.user import User
+
     # Import and register routes (blueprints)
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix="/auth")
 
     # Register other blueprints
-    from app.routes.products import products_bp
-    from app.routes.upload import upload_bp
-    app.register_blueprint(products_bp, url_prefix="/api")
-    app.register_blueprint(upload_bp, url_prefix="/api")
+    #from app.routes.products import products_bp
+    #from app.routes.upload import upload_bp
+    #app.register_blueprint(products_bp, url_prefix="/api")
+    #app.register_blueprint(upload_bp, url_prefix="/api")
 
     return app

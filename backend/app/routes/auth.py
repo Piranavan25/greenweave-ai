@@ -11,13 +11,18 @@ auth_bp = Blueprint("auth", __name__)
 @auth_bp.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
-    username, password = data['username'], data['password']
+    username = data['username'] 
+    email = data['email']
+    password = data['password']
 
     if User.query.filter_by(username=username).first():
         return jsonify({"error": "Username already exists"}), 400
+    
+    if User.query.filter_by(email=email).first():
+        return jsonify({"error": "Email already exists"}), 400
 
     hashed = hash_password(password)
-    new_user = User(username=username, password_hash=hashed)
+    new_user = User(username=username, email=email, password_hash=hashed)
     db.session.add(new_user)
     db.session.commit()
 
