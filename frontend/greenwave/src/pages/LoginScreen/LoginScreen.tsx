@@ -1,14 +1,12 @@
 import { useState }  from "react";
-import './LoginScreen.css';
+import { authService, tokenService } from '../Services/apiService';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginScreen(){
 
-    const loginUser = async (email: string, password: string) => {
-  // ... API call logic would be here
-  console.log("Logging in with:", email, password);//should remove 
-};
+    
 
 
 
@@ -16,6 +14,8 @@ export default function LoginScreen(){
     const[password,setPassword]= useState('');
     const[isLoading,setisLoading]= useState(false);
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault()
@@ -23,7 +23,9 @@ export default function LoginScreen(){
         setError(null)
 
         try{
-            await loginUser(email,password)
+            const data = await authService.login(email, password);
+            tokenService.storeTokens(data.access_token, data.refresh_token);
+            navigate('/dashboard');
 
         }catch(err){
             setError('Failed to log in. Please check your credentials.');
