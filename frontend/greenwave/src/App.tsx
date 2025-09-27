@@ -3,6 +3,8 @@ import './App.css'
 import LoginScreen from './pages/LoginScreen'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignupScreen from "./pages/SignupScreen/SignupScreen";
+import HomeScreen from "./pages/HomeScreen/HomeScreen";
+
 import Layout from "./pages/Layout/Layout";
 
 
@@ -13,15 +15,17 @@ function App() {
       <Router>
       <Routes>
         <Route 
-        path="/login" 
+        path="/" 
         element={
         <Layout>
-          <LoginScreen />
+          <HomeScreen />
         </Layout>
         
       } 
         />
+        
         <Route path="/signup" element={<SignupScreen />} />
+        <Route path="/login" element={<LoginScreen />} />
       </Routes>
     </Router>
     </>
